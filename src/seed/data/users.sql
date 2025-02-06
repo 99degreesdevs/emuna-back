@@ -1,0 +1,2 @@
+INSERT INTO "public"."users" ("userId", "email", "name", "born", "phone", "password", "avatar", "roles") VALUES
+( '9076eeb6-a891-4a13-81ed-cac848f1d6c4',  'admin@emuna.com', 'Administrador Emuna', '1991-03-01', '+525544998833', '$2b$10$ijcKAZQTQSn/YzCFJ23iV.vCjthZtT.WOL9Y5KY2jhWADvBafi2YO', NULL, '{user,admin,master}');

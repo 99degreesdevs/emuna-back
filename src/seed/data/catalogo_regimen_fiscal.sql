@@ -1,0 +1,21 @@
+
+INSERT INTO "public"."regimen-fiscal" ("cRF", "description", "fisica", "moral") VALUES 
+(601, 'General de Ley Personas Morales', false, true ),
+(603, 'Personas Morales con Fines no Lucrativos', false, true ),
+(605, 'Sueldos y Salarios e Ingresos Asimilados a Salarios', true, false ),
+(606, 'Arrendamiento', true, false ),
+(607, 'Régimen de Enajenación o Adquisición de Bienes', true, false ),
+(608, 'Demás ingresos', true, false ),
+(610, 'Residentes en el Extranjero sin Establecimiento Permanente en México', true, true ),
+(611, 'Ingresos por Dividendos (socios y accionistas)', true, false ),
+(612, 'Personas Físicas con Actividades Empresariales y Profesionales', true, false ),
+(614, 'Ingresos por intereses', true, false ),
+(615, 'Régimen de los ingresos por obtención de premios', true, false ),
+(616, 'Sin obligaciones fiscales', true, false ),
+(620, 'Sociedades Cooperativas de Producción que optan por diferir sus ingresos', false, true ),
+(621, 'Incorporación Fiscal', true, false ),
+(622, 'Actividades Agrícolas, Ganaderas, Silvícolas y Pesqueras', false, true ),
+(623, 'Opcional para Grupos de Sociedades', false, true ),
+(624, 'Coordinados', false, true ),
+(625, 'Régimen de las Actividades Empresariales con ingresos a través de Plataformas Tecnológicas', true, false ),
+(626, 'Régimen Simplificado de Confianza', true, true ); 
