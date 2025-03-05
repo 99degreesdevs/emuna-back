@@ -33,7 +33,6 @@ export class CreateMotivationalQuoteDto {
   @Type(() => Date)
   @IsOptional()
   @IsDate( { message: "El campo publicationDate debe ser de tipo fecha" })
-  @Validate(IsFutureDateConstraint, { message: "La fecha de publicación debe ser igual o mayor a la fecha actual" })
   publicationDate?: Date;
 }
 

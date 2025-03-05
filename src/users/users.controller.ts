@@ -235,7 +235,7 @@ export class UsersController {
   }
 
   @Patch(':userId')
-  @Auth(ValidRoles.admin)
+  @Auth(ValidRoles.admin, ValidRoles.user)
   @UseInterceptors(TokenInterceptor)
   @ApiOperation({
     summary: 'Update a user by their ID',

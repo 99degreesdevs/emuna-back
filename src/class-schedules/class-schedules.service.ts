@@ -46,12 +46,6 @@ export class ClassSchedulesService {
     try {
       const classStart = moment(createClassScheduleDto.classDateStart);
 
-      if (classStart.isAfter(moment(createClassScheduleDto.classDateEnd))) {
-        throw new BadRequestException(
-          `La fecha de inicio de la clase debe ser menor a la fecha de fin de la clase`
-        );
-      }
-
       const category = createClassScheduleDto.category;
 
       const categoryExist = await this.classScheduleCatRepository.findByPk(
@@ -147,8 +141,7 @@ export class ClassSchedulesService {
     }
 
     if (pageOptionsDto.classDate) {
-      const _targetDate = moment(pageOptionsDto.classDate).startOf("day");
-      const targetDate = _targetDate.add(1, "day");
+      const targetDate = moment(pageOptionsDto.classDate).startOf("day");
       whereConditions.classDateStart = {
         [Op.gte]: targetDate.toDate(),
         [Op.lt]: targetDate.clone().endOf("day").toDate(),

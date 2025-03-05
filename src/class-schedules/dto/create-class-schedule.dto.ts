@@ -14,7 +14,6 @@ export class CreateClassScheduleDto {
   })
   @Type(() => Date) 
   @IsDate( { message: "El campo classDateStart debe ser de tipo fecha" })
-  @Validate(IsFutureDateConstraint, { message: "La fecha de inicio de clase  debe ser mayor a la fecha actual" })
   classDateStart: Date;
 
   @ApiProperty({
@@ -24,7 +23,6 @@ export class CreateClassScheduleDto {
   })
   @Type(() => Date) 
   @IsDate( { message: "El campo classDateEnd debe ser de tipo fecha" })
-  @Validate(IsFutureDateConstraint, { message: "La fecha de fin de clase debe ser mayor a la fecha actual" })
   classDateEnd: Date;
   
   @ApiProperty({

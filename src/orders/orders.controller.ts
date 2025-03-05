@@ -16,6 +16,7 @@ export class OrdersController {
   @Auth(ValidRoles.admin, ValidRoles.user)
   @UseInterceptors(TokenInterceptor)
   create(@Body() createOrderDto: CreateOrderDto, @GetUser() user: Users) { 
+    console.log(user);
     return this.ordersService.create(createOrderDto, user.userId);
   }
 
@@ -45,5 +46,12 @@ export class OrdersController {
   @UseInterceptors(TokenInterceptor)
   remove(@Param('order') order: string) {
     return this.ordersService.remove(order);
+  }
+
+  @Get('order/:userId')
+  @Auth(ValidRoles.admin, ValidRoles.user)
+  @UseInterceptors(TokenInterceptor)
+  findByUser(@Param('userId') userId: string) {
+    return this.ordersService.findByUser(userId);
   }
 }

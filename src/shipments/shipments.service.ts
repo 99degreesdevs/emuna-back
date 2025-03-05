@@ -26,8 +26,6 @@ export class ShipmentsService {
       whereConditions.status = pageOptionsDto.status;
     }
 
-  
-
     const itemCount = await this.shipmentsRepository.count({
       where: whereConditions,
     });
@@ -40,39 +38,18 @@ export class ShipmentsService {
         order: [["createdAt", pageOptionsDto.order]],
         where: whereConditions,
         attributes: { exclude: ["deletedAt"] },
+        include: [
+          {
+            model: Order,
+            attributes: { exclude: ["deletedAt"] }
+          }
+        ]
       })
       .then((shipments) => {
         if (shipments.length === 0)
           throw new NotFoundException(
             "Actualmente no hay envios regitrados. Por favor, intente nuevamente más tarde."
           );
-
-        // const _classSchedule = classSchedule.map((classSchedule) => {
-        //   return {
-        //     classId: classSchedule.classId,
-        //     createAt: moment(classSchedule.createdAt).format(
-        //       "YYYY-MM-DD HH:mm:ss"
-        //     ),
-        //     classDateStart: moment(classSchedule.classDateStart).format(
-        //       "YYYY-MM-DD HH:mm:ss"
-        //     ),
-        //     classDateEnd: moment(classSchedule.classDateEnd).format(
-        //       "YYYY-MM-DD HH:mm:ss"
-        //     ),
-        //     day: classSchedule.day,
-        //     dayName: classSchedule.dayName,
-        //     scheduleStart: classSchedule.scheduleStart,
-        //     scheduleEnd: classSchedule.scheduleEnd,
-        //     duration: classSchedule.duration,
-        //     category: classSchedule.category,
-        //     class: classSchedule.class,
-        //     description: classSchedule.description,
-        //     teacher: classSchedule.teacher,
-        //     places: classSchedule.places,
-        //     availablePlaces: classSchedule.availablePlaces,
-        //     isActive: classSchedule.isActive,
-        //   };
-        // });
 
         return {
           message: "ok",

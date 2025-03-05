@@ -1,8 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Type } from "class-transformer";
-import { IsDate, IsIn, IsOptional, IsString, MaxLength, MinLength, Validate } from "class-validator";
+import { IsDate, IsIn, IsOptional, IsString} from "class-validator";
 import { IsOnlyTime } from "src/class-schedules/validators/IsOnlyTime";
-import { IsFutureDateConstraint } from "src/motivational-quotes/helpers/constrains/is-future-date";
 
 export class CreateMultimediaDto {
   @ApiProperty({
@@ -42,9 +41,6 @@ export class CreateMultimediaDto {
   @Type(() => Date)
   @IsOptional()
   @IsDate({ message: "El campo publicationDate debe ser de tipo fecha" })
-  @Validate(IsFutureDateConstraint, {
-    message: "La fecha de publicación debe ser igual o mayor a la fecha actual",
-  })
   publicationDate?: Date;
 
   @ApiProperty({

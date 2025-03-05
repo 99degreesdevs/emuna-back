@@ -155,6 +155,10 @@ export class ClassScheduleTransactionService {
 
       const _transaction =
         await this.classScheduleTransactionRepository.findAll({
+          where: {
+            userId,
+            isActive: true
+          },
           offset: (pageOptionsDto.page - 1) * pageOptionsDto.take,
           limit: pageOptionsDto.take,
           order: [["createdAt", pageOptionsDto.order]],

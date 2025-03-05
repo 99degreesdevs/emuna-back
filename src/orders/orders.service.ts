@@ -305,6 +305,34 @@ export class OrdersService {
     }
   }
 
+  async findByUser(userId: string) {
+    try {
+      const orders = await this.orderRepository.findAll({
+        where: { buyerUser: userId },
+        order: [["createdAt", "DESC"]],
+        attributes: {
+          exclude: ["deletedAt", "updatedAt", "createdBy"],
+        },
+        include: [
+          {
+            model: Users,
+            as: "buyerOrder",
+            foreignKey: "buyerUser",
+            attributes: ["userId", "name", "email", "phone"],
+          },
+        ],
+      });
+
+      return {
+        message: `Se obtuvieron ${orders.length} ordenes del usuario exitosamente.`,
+        total: orders.length,
+        orders: orders,
+      };
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
   private handleError(error: any) {
     if (error.status === 404) {
       throw new NotFoundException(error.message);

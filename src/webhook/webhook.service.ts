@@ -113,9 +113,9 @@ export class WebhookService {
     } = this.categorizeProducts(products.products);
 
     if (paquetes.length !== 0) {
-      const { 2: _clases, 3: _ceremonias } =
+      const { 2: _clases = [], 3: _ceremonias = [] } =
         await this.getPackageItems(paquetes);
-      clases.push(..._clases);
+      if (_clases) clases.push(..._clases);
       if (_ceremonias) ceremonias.push(..._ceremonias);
     }
 

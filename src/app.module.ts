@@ -45,11 +45,16 @@ import { ClassScheduleTransactionModule } from './class-schedule-transaction/cla
       username: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       autoLoadModels: true,
-      timezone: process.env.DB_TZ,
       synchronize: true,
       logging: true,
       sync: { alter: true },
       logQueryParameters: false,
+     /*  ssl: true,
+      dialectOptions: {
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      }, */
     }),
     MailerModule.forRoot({
       transport: {
