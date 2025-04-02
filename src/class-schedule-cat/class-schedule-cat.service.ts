@@ -16,7 +16,11 @@ export class ClassScheduleCatService {
   }
 
   findAll() {
-    return this.classScheduleCategoryRepository.findAll();
+    return this.classScheduleCategoryRepository.findAll({
+      where: {
+        isActive: true,
+      },
+    });
   }
 
   update(id: number, updateClassScheduleCatDto: UpdateClassScheduleCatDto) {
